@@ -3,22 +3,31 @@
         <p class="fs-1">Alta</p>
         <div class="row align-items-start">
             <div class="col-sm-6">
-                <form>
+                <form method="POST" id="create-form" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="arrival" class="form-label h6">Horario Llegada</label>
-                        <input type="time" class="form-control" id="arrival" aria-describedby="emailHelp">
+                        <input type="time" class="form-control" id="arrival" name="arrival" namearia-describedby="emailHelp" required>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                        <div class="invalid-feedback">
+                            Por favor, selecciona una hora válida.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="flight" class="form-label h6">Vuelo</label>
-                        <input type="text" class="form-control" id="flight" placeholder="Numero de Vuelo p.ej.: AU 2399">
+                        <input type="text" class="form-control" id="flight" name="flightNumber" placeholder="Numero de Vuelo p.ej.: AU 2399">
+                        <div class="invalid-feedback">
+                            Por favor, escribe un vuelo válido.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="airline" class="form-label h6">Línea Aerea</label>
-                        <input type="text" class="form-control" id="airline" placeholder="Linea Aerea p.ej.: Latam">
+                        <input type="text" class="form-control" id="airline" name="airline" placeholder="Linea Aerea p.ej.: Latam" required>
+                        <div class="invalid-feedback">
+                            Por favor, escribe una línea aerea válida.
+                        </div>
                     </div>
                     <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="delayed">
+                        <input type="checkbox" class="form-check-input" id="delayed" name="delayed" value="true">
                         <label class="form-check-label" for="delayed">Demorado</label>
                     </div>
                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -28,5 +37,43 @@
         </div>
     </div>
 
+    {{!-- <script>
+        const $form = document.querySelector('#create-form');
+
+        (function() {
+            'use strict';
+            window.addEventListener('load', function() {
+            $form.addEventListener('submit', function(event) {
+                if ($form.checkValidity() === false || validateFlight() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+                } 
+                $form.classList.add('was-validated');
+                
+                
+            }, false);
+            }, false);
+        })();
+
+        function validateFlight() {
+            const $flight = document.querySelector("[name=flightNumber]");
+            const isValid = /^[A-Z]{2,4} [0-9]{4}$/.test($flight.value);
+
+            if (isValid) {
+                $flight.classList.remove('is-invalid');
+                $flight.classList.add('is-valid');
+                return true;
+            } else {
+                $flight.classList.remove('is-valid');
+                $flight.classList.add("is-invalid");
+
+                const errorFeedback = $flight.nextElementSibling;
+                if (errorFeedback && errorFeedback.classList.contains('invalid-feedback')) {
+                    errorFeedback.textContent = "El número de vuelo debe tener 2 a 4 letras seguidas de 4 dígitos (por ejemplo, AB 1234).";
+                }
+                return false;
+            }
+        };
+    </script> --}}
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>

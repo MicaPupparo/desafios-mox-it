@@ -1,0 +1,22 @@
+<body>
+    <p class="fs-1">Modificar</p>
+
+    <div class="row align-items-start" id="elegir-vuelo" >
+        <div class="col-sm-6">
+            <form method="POST">
+                <div class="col">
+                    <select name="selectFlightNumber" class="form-select form-select-sm" aria-label="Small select example">
+                        {{#each flights as |flight|}}
+                            <option value="{{flight.dataValues.flightNumber}}">{{flight.dataValues.flightNumber}}</option>
+                        {{/each}}
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+</body>

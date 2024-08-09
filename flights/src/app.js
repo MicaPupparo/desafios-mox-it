@@ -9,6 +9,7 @@ const port = 3000 || process.env.PORT;
 const homeRoute = require('./routes/homeRoute');
 const flightCreateRoute = require('./routes/flightCreateRoute');
 const flightDeleteRoute = require("./routes/flightDeleteRoute");
+const flightSelectRoute = require("./routes/flightSelectRoute")
 const flightModifyRoute = require("./routes/flightModifyRoute");
 
 const app = express();
@@ -29,6 +30,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.use('/', homeRoute);
 app.use('/alta', flightCreateRoute);
 app.use("/baja", flightDeleteRoute);
+app.use("/seleccionar", flightSelectRoute);
 app.use("/modificar", flightModifyRoute);
 
 (async () => {

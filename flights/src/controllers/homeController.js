@@ -1,7 +1,10 @@
+const Flights = require("../database/models/Flight");
+
 const controller = {
-    index: (req, res) => {
-        res.render("home", { title: "Pagina de Inicio", message: "holaaa" });
+    index: async (req, res) => {
+        const flights = await Flights.findAll();
+        res.render("home", { title: "Vuelos", flights}); 
     }
 }
 
-module.exports = controller;
+module.exports = controller

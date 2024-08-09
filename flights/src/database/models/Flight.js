@@ -24,6 +24,10 @@ const Flight = sequelize.define('Flight', {
   airline: {
     type: DataTypes.TEXT,
     allowNull: false
+  },
+  delayed: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: false
   }
 });
 

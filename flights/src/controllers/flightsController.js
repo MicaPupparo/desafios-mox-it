@@ -1,4 +1,4 @@
-const { where } = require("sequelize");
+const { where } = require("sequelize"); //chequear
 const Flight = require("../database/models/Flight");
 
 const controller = {
@@ -9,9 +9,9 @@ const controller = {
         try {
             const { flightNumber, arrival, airline, delayed } = req.body;
             await Flight.create({ flightNumber, arrival, airline, delayed });
-            res.redirect("/"); // Redirige a la lista de usuarios después de guardar
+            res.redirect("/"); 
           } catch (error) {
-            res.status(500).send('Error al crear vuelo:');
+            console.error("Error al crear vuelo:", error);
           }
     },
     showDelete: async (req, res) => {
@@ -20,7 +20,7 @@ const controller = {
             res.render("deleteFlight", { title: "Baja de Vuelos", onlyFlightsNumber });
         }
         catch (error) {
-            console.error('Error buscando los numeros de vuelo:', error);
+            console.error("Error buscando los numeros de vuelo:", error);
         }
         
     },
@@ -32,7 +32,6 @@ const controller = {
         }
 
         try {
-            // Elimina el registro con el ID especificado
             const result = await Flight.destroy({
                 where: { flightNumber: flightNumber }
             });
@@ -50,7 +49,7 @@ const controller = {
     showModify: async (req, res) => {
         try {
             const flightSelected = req.body;
-            const flight = await Flight.findByPk(flightSelected.selectFlightNumber)
+            const flight = await Flight.findOne(flightSelected.selectFlightNumber)
             res.render("modifyFlight", { title: "Modificacion de Vuelo", flight });
         }
         catch (error) {
@@ -64,7 +63,7 @@ const controller = {
             await Flight.update(
                 { arrival, airline, delayed },
                 {where: {flightNumber}});
-            res.redirect("/"); // Redirige a la lista de usuarios después de guardar
+            res.redirect("/"); 
           } catch (error) {
             res.status(500).send('Error al modificar vuelo:');
           }

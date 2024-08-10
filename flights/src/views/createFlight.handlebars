@@ -3,10 +3,10 @@
         <p class="fs-1">Alta</p>
         <div class="row align-items-start">
             <div class="col-sm-6">
-                <form method="POST" id="create-form" class="needs-validation" novalidate>
+                <form method="POST" id="create-form">
                     <div class="mb-3">
                         <label for="arrival" class="form-label h6">Horario Llegada</label>
-                        <input type="time" class="form-control" id="arrival" name="arrival" namearia-describedby="emailHelp" required>
+                        <input type="time" class="form-control" id="arrival" name="arrival" required>
                         <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                         <div class="invalid-feedback">
                             Por favor, selecciona una hora válida.
@@ -14,7 +14,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="flight" class="form-label h6">Vuelo</label>
-                        <input type="text" class="form-control" id="flight" name="flightNumber" placeholder="Numero de Vuelo p.ej.: AU 2399">
+                        <input type="text" class="form-control" id="flight" name="flightNumber" placeholder="Numero de Vuelo p.ej.: AU 2399" required>
                         <div class="invalid-feedback">
                             Por favor, escribe un vuelo válido.
                         </div>
@@ -30,50 +30,69 @@
                         <input type="checkbox" class="form-check-input" id="delayed" name="delayed" value="true">
                         <label class="form-check-label" for="delayed">Demorado</label>
                     </div>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
+                    <button type="submit" class="btn btn-primary" id="submit-button">Guardar</button>
                 </form>
             </div>
             
         </div>
     </div>
 
-    {{!-- <script>
-        const $form = document.querySelector('#create-form');
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const $form = document.querySelector("#create-form");
+            const $submitButton = document.querySelector("#submit-button");
 
-        (function() {
-            'use strict';
-            window.addEventListener('load', function() {
-            $form.addEventListener('submit', function(event) {
-                if ($form.checkValidity() === false || validateFlight() === false) {
-                event.preventDefault();
-                event.stopPropagation();
-                } 
-                $form.classList.add('was-validated');
-                
-                
-            }, false);
-            }, false);
-        })();
+            const $arrival = $form.arrival;
+            const $flightNumber = $form.flightNumber;
+            const $airline = $form.airline;
+            const errorFeedbackArrival = $arrival.nextElementSibling;
+            const errorFeedbackFlightNumber = $flightNumber.nextElementSibling;
+            const errorFeedbackAirline = $airline.nextElementSibling;
 
-        function validateFlight() {
-            const $flight = document.querySelector("[name=flightNumber]");
-            const isValid = /^[A-Z]{2,4} [0-9]{4}$/.test($flight.value);
+            $submitButton.addEventListener("click", event => {
+                resetValidationStyle();
 
-            if (isValid) {
-                $flight.classList.remove('is-invalid');
-                $flight.classList.add('is-valid');
-                return true;
-            } else {
-                $flight.classList.remove('is-valid');
-                $flight.classList.add("is-invalid");
+                validateNotEmpty($arrival, event);
+                validateNotEmpty($flightNumber, event);
+                validateNotEmpty($airline, event);
 
-                const errorFeedback = $flight.nextElementSibling;
-                if (errorFeedback && errorFeedback.classList.contains('invalid-feedback')) {
-                    errorFeedback.textContent = "El número de vuelo debe tener 2 a 4 letras seguidas de 4 dígitos (por ejemplo, AB 1234).";
+                validateFlightNumber(event);
+            })
+
+            function removeClassIsInvalid ($element) {
+                if ($element.classList.contains("is-invalid")) {
+                    $element.classList.remove("is-invalid");
                 }
-                return false;
             }
-        };
-    </script> --}}
+            
+            function resetValidationStyle() {
+                removeClassIsInvalid($arrival);
+                removeClassIsInvalid($flightNumber);
+                removeClassIsInvalid($airline);
+            }
+
+            function validateNotEmpty($element, event) {
+                if (!$element.value) {
+                    event.preventDefault();
+                    $element.classList.add("is-invalid");
+                }
+            }
+
+            function validateFlightNumber(event) {
+                const isValidFlightNumber = /^[A-Z]{2,4} [0-9]{4}$/.test($flightNumber.value);
+
+                if (!isValidFlightNumber) {
+                    event.preventDefault();
+                    if (errorFeedbackFlightNumber && errorFeedbackFlightNumber.classList.contains("invalid-feedback")) {
+                        $flightNumber.classList.add("is-invalid");
+                        errorFeedbackFlightNumber.textContent = "El número de vuelo debe tener 2 a 4 letras seguidas de 4 dígitos (por ejemplo, AB 1234).";
+                    }
+                } 
+            }
+        })
+
+
+    </script>
+
     <script src="/js/bootstrap.bundle.min.js"></script>
 </body>

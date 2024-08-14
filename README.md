@@ -28,9 +28,11 @@ A continuación, paso a detallar las consignas de cada uno de ellos y a enumerar
 
 ### Colores
 
-    Se debe desarrollar un juego web que ponga a prueba las habilidades para detectar un color según su código hexadecimal. Por ejemplo, si el juego indica el nombre #ff0000 el jugador deberá elegir uno de los colores mostrados.
+    Se debe desarrollar un juego web que ponga a prueba las habilidades para detectar un color según su código hexadecimal. 
+    Por ejemplo, si el juego indica el nombre #ff0000 el jugador deberá elegir uno de los colores mostrados.
     El color para adivinar y los colores para elegir deben ser generados de forma automática cada vez que se refresca la página.
-    De forma adicional se valorará la existencia de un menú inicial para elegir dificultad. En caso de ser más fácil, serán menos colores para elegir y más diferentes entre sí. En caso de jugar en modo difícil serán mas colores y con menos diferencia.
+    De forma adicional se valorará la existencia de un menú inicial para elegir dificultad. En caso de ser más fácil, serán menos 
+    colores para elegir y más diferentes entre sí. En caso de jugar en modo difícil serán mas colores y con menos diferencia.
 
 ## Tecnologías utilizadas
 
@@ -56,7 +58,7 @@ Para Colores utilicé el lenguaje **JavaScript**, el framework **Bootstrap**, **
 + Reutilización de componentes gracias a layouts y partials
 + Creación de variables/funciones con nombre intuitivo para la facilitación de lectura
 
-###Para el desafío Colores
+### Para el desafío Colores
 
 + Manipulación de objetos y estilos desde JavaScript
 + Modularización de la lógica del juego

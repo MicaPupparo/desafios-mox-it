@@ -14,74 +14,62 @@
             <hr>
         </div>
         
-        <div class="container h-85 mt-5" id="set-difficulty-section">
-            <div class="container h-100 justify-content-center align-items-center">
-                <form class="h-100" id="set-difficulty-form">
-                    <div class="row justify-content-md-center align-items-center">
-                        <div class="col-md-auto py-2">
-                            <button type="submit" class="btn btn-outline-success btn-lg py-2 px-5 set-difficulty-buttons" value="easy">Fácil</button>
-                        </div>
-                    </div>
-                    <div class="row justify-content-md-center align-items-center">
-                        <div class="col-md-auto py-2">
-                            <button type="submit" class="btn btn-outline-warning btn-lg py-2 px-5 set-difficulty-buttons" value="medium">Medio</button>
-                        </div>
-                    </div>
-                    <div class="row justify-content-md-center align-items-center">
-                        <div class="col-md-auto py-2">
-                            <button type="submit" class="btn btn-outline-danger btn-lg py-2 px-5 set-difficulty-buttons" value="difficult">Difícil</button>
-                        </div>
-                    </div>
-                </form>
+        <div class="container mb-5" id="set-difficulty-section">
+            <div class="row justify-content-center">
+              <div class="col-4 text-center">
+                <button type="submit" class="btn btn-outline-success btn-lg px-4 py-2 set-difficulty-buttons" value="easy">Fácil</button>
+              </div>
+              <div class="col-4 text-center">
+                <button type="submit" class="btn btn-outline-warning btn-lg px-4 py-2 set-difficulty-buttons" value="medium">Medio</button>
+              </div>
+              <div class="col-4 text-center">
+                <button type="submit" class="btn btn-outline-danger btn-lg px-4 py-2 set-difficulty-buttons" value="difficult">Difícil</button>
+              </div>
             </div>
-        </div>
+          </div>
 
 
-        <div class="container h-75 justify-content-center align-items-center position-relative" id="game-section">
-            <div class="container pt-5 mt-5">
-                <h2 class="display-6">¿Qué color es #ff0000?</h2>
+        <div class="container mb-5 text-center" id="game-section">
+            <h2 class="display-6" id="which-color-is-it">¿Qué color es #ff0000?</h2>
+            <div id="score-current" class="pt-3">
+              <h4>Tu puntaje es: <span id="current-score">0</span></h4>
             </div>
-            <div class="container pt-5 mt-5">
-                <h4 id="score-count">Tu puntaje es: 0</h4>
-            </div>
-            <div class="row w-100 position-absolute top-50 start-50 translate-middle">
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
-                <div class="col position-relative">
-                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
-                </div>
+            <div class="row justify-content-center mt-4" id="squares-container">
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
+              <div class="col-lg-2 col-md-4 col-sm-6">
+                <div class="square"></div>
+              </div>
             </div>
         </div>
             
-        <div class="container h-75 justify-content-center align-items-center" id="scores-section">
-            <div class="container">
-                <p>Perdiste!</p>
-            </div>
-            <table class="table table-primary table-striped w-75 justify-content-md-center align-items-center">
-                <thead>
-                    <tr>
-                    <th scope="col">Partida</th>
-                      <th scope="col">Puntaje</th>
-                      <th scope="col">Dificultad</th>
-                      <th scope="col">Ronda alcanzada</th>
-                    </tr>
-                </thead>
-                <tbody id="table-body-scores">
-                    
-                </tbody>
+        <div class="container mb-5" id="scores-section">
+            <h5 class="text-center">Puntajes Previos</h5>
+            <table class="table table-striped table-primary w-75 mx-auto">
+              <thead>
+                <tr>
+                  <th scope="col">Partidas</th>
+                  <th scope="col">Puntajes</th>
+                  <th scope="col">Dificultad</th>
+                  <th scope="col">Ronda alcanzada</th>
+                </tr>
+              </thead>
+              <tbody id="table-body-scores">
+                <!-- Aquí irán las filas generadas dinámicamente -->
+              </tbody>
             </table>
         </div>
     </div>

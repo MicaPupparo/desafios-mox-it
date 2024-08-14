@@ -2,7 +2,8 @@ const $setdifficultySection = document.querySelector("#set-difficulty-section");
 const $gameSection = document.querySelector("#game-section");
 const $scoresSection = document.querySelector("#scores-section");
 const $setDifficultyButtons = document.querySelectorAll(".set-difficulty-buttons");
-const $colorSquares = document.querySelectorAll(".square");
+const $messageColor = document.querySelector("#which-color-is-it");
+const $currentScore = document.querySelector("#current-score");
 
 
 $setDifficultyButtons.forEach((button) => {
@@ -25,18 +26,18 @@ function handleRounds(difficulty) {
     let points = 0;
     let winning = true;
 
-    let color = newRound(difficulty);
+    createSquares(difficulty);
+    const $colorSquares = document.querySelectorAll(".square");
 
-    console.log(color)
-    
+    let color = newRound(difficulty, $colorSquares, points);
+
     $colorSquares.forEach((square) => {
         square.onclick = event => {
             event.preventDefault();
             winning = isSquareCorrect(event.target, color);
             if (winning) {
-                color = newRound(difficulty);
                 points = handlePoints(difficulty, points);
-                console.log(points)
+                color = newRound(difficulty, $colorSquares, points);
                 round++;
             } else {
                 saveCurrentPoints(difficulty, points, round);
@@ -44,6 +45,41 @@ function handleRounds(difficulty) {
             }
         }
     })
+}
+
+function createSquares(difficulty) {
+    const $squaresContainer = document.querySelector("#squares-container");
+    $squaresContainer.innerHTML = "";
+
+    if (difficulty == "easy") {
+        for (i = 0; i < 3; i++) {
+            $squaresContainer.innerHTML += `
+                <div class="col-lg-4">
+                    <div class="square"></div>
+                </div>
+            `
+        }
+    }
+
+    if (difficulty == "medium") {
+        for (i = 0; i < 4; i++) {
+            $squaresContainer.innerHTML += `
+                      <div class="col-lg-2">
+                        <div class="square"></div>
+                    </div>
+            `;
+        }
+    }
+
+    if (difficulty == "difficult") {
+        for (i = 0; i < 6; i++) {
+            $squaresContainer.innerHTML += `
+                <div class="col-lg-2 col-md-4 col-sm-6">
+                    <div class="square"></div>
+                </div>
+            `;
+        }
+    }
 }
 
 function saveCurrentPoints(difficulty, points, round) {
@@ -80,18 +116,23 @@ function isSquareCorrect(element, color) {
     return isCorrect;
 }
 
-function newRound(difficulty) {
-    const randomPosition = Math.floor(Math.random()*6);
+function newRound(difficulty, $colorSquares, points) {
+    const randomPosition = randomPositionByDifficulty(difficulty);
+    console.log(randomPosition)
     const color = tinycolor.random();
     $colorSquares[randomPosition].style.backgroundColor = `${color.toHexString()}`;
 
-    setSquareColorByDifficulty(difficulty, randomPosition, color);
+    setSquareColorByDifficulty(difficulty, randomPosition, color, $colorSquares);
+
+    $messageColor.innerText = `${color.toHexString()}`;
+    $currentScore.innerText = `Tu puntaje es: ${points}`;
+
     return color.toHexString();
 }
 
-function setSquareColorByDifficulty(difficulty, usedPosition, color) {
+function setSquareColorByDifficulty(difficulty, usedPosition, color, $colorSquares) {
     if (difficulty == "easy") {
-        for (i = 0; i < 6; i++) {
+        for (i = 0; i < 3; i++) {
             if (i != usedPosition) {
                 let randomColor = tinycolor.random().toHexString();
                 $colorSquares[i].style.backgroundColor = `${randomColor}`;
@@ -102,7 +143,7 @@ function setSquareColorByDifficulty(difficulty, usedPosition, color) {
     if (difficulty == "medium") {
         let monochromaticPalette = color.monochromatic();
         let monochromaticPosition = 1
-        for (i = 0; i < 6; i++){
+        for (i = 0; i < 4; i++){
             if (i != usedPosition) {
                 let monochromaticColor = monochromaticPalette[monochromaticPosition].toHexString();
                 $colorSquares[i].style.backgroundColor = `${monochromaticColor}`;
@@ -123,6 +164,15 @@ function setSquareColorByDifficulty(difficulty, usedPosition, color) {
             }
         }
     }
+}
+
+function randomPositionByDifficulty(difficulty) {
+    let randomPosition;
+    difficulty == "easy" ? randomPosition = Math.floor(Math.random()*3) :
+    difficulty == "medium" ? randomPosition = Math.floor(Math.random()*4) :
+    difficulty == "difficult" ? randomPosition = Math.floor(Math.random()*6) : console.log("error");
+
+    return randomPosition;
 }
 
 function endGame() {

@@ -4,12 +4,14 @@
   "description": "desafios propuestos para beca tecnologica",
   "main": "flights/src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon flights/src/app.js"
+    "start": "nodemon ./src/app.js"
   },
   "author": "Micaela Belen Pupparo",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
     "nodemon": "^3.1.4"
   },
   "dependencies": {

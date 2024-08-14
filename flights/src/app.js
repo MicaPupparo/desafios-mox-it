@@ -8,7 +8,6 @@ const port = 3000 || process.env.PORT;
 const homeRoute = require("./routes/homeRoute");
 const createFlightRoute = require("./routes/createFlightRoute");
 const deleteFlightRoute = require("./routes/deleteFlightRoute");
-const selectFlightRoute = require("./routes/modifyFlightRoute")
 const modifyFlightRoute = require("./routes/modifyFlightRoute");
 
 const app = express();

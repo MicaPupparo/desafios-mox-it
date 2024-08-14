@@ -1,0 +1,15 @@
+{
+  "name": "colors",
+  "version": "1.0.0",
+  "description": "desafio llamado colores, juego para adivinar el color dado",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server ./colors/src"
+  },
+  "author": "Micaela Belen Pupparo",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "tinycolor2": "^1.6.0"
+  }
+}

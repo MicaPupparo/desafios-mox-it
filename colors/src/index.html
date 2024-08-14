@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <title>Colores</title>
+</head>
+<body>
+    <div class="container vh-100" id="full-screen-container">   
+        <div class="container h-15">
+            <h1 class="rainbow-text display-2">Juego Colores</h1>
+            <hr>
+        </div>
+        
+        <div class="container h-85 mt-5" id="set-difficulty-section">
+            <div class="container h-100 justify-content-center align-items-center">
+                <form class="h-100" id="set-difficulty-form">
+                    <div class="row justify-content-md-center align-items-center">
+                        <div class="col-md-auto py-2">
+                            <button type="submit" class="btn btn-outline-success btn-lg py-2 px-5 set-difficulty-buttons" value="easy">Fácil</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center align-items-center">
+                        <div class="col-md-auto py-2">
+                            <button type="submit" class="btn btn-outline-warning btn-lg py-2 px-5 set-difficulty-buttons" value="medium">Medio</button>
+                        </div>
+                    </div>
+                    <div class="row justify-content-md-center align-items-center">
+                        <div class="col-md-auto py-2">
+                            <button type="submit" class="btn btn-outline-danger btn-lg py-2 px-5 set-difficulty-buttons" value="difficult">Difícil</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+        <div class="container h-75 justify-content-center align-items-center position-relative" id="game-section">
+            <div class="container pt-5 mt-5">
+                <h2 class="display-6">¿Qué color es #ff0000?</h2>
+            </div>
+            <div class="container pt-5 mt-5">
+                <h4 id="score-count">Tu puntaje es: 0</h4>
+            </div>
+            <div class="row w-100 position-absolute top-50 start-50 translate-middle">
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+                <div class="col position-relative">
+                    <div class="square position-absolute top-100 start-50 translate-middle"></div>
+                </div>
+            </div>
+        </div>
+            
+        <div class="container h-75 justify-content-center align-items-center" id="scores-section">
+            <div class="container">
+                <p>Perdiste!</p>
+            </div>
+            <table class="table table-primary table-striped w-75 justify-content-md-center align-items-center">
+                <thead>
+                    <tr>
+                    <th scope="col">Partida</th>
+                      <th scope="col">Puntaje</th>
+                      <th scope="col">Dificultad</th>
+                      <th scope="col">Ronda alcanzada</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body-scores">
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+    <script src="./libs/tinycolor-min.js"></script>
+    <script src="./public/js/index.mjs"></script>
+</body>
+</html>

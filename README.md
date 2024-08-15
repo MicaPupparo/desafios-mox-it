@@ -8,6 +8,7 @@ A continuación, paso a detallar las consignas de cada uno de ellos y a enumerar
 
 - [Inicio](#desafíos-mox-it)
 - [Consignas](#consignas)
+- [Aclaración](#aclaración)
 - [Tecnologías utilizadas](#tecnologías-utilizadas)
 - [Temas tratados](#temas-tratados)
 - [Documentación utilizada](#documentación-utilizada)
@@ -33,6 +34,12 @@ A continuación, paso a detallar las consignas de cada uno de ellos y a enumerar
     El color para adivinar y los colores para elegir deben ser generados de forma automática cada vez que se refresca la página.
     De forma adicional se valorará la existencia de un menú inicial para elegir dificultad. En caso de ser más fácil, serán menos 
     colores para elegir y más diferentes entre sí. En caso de jugar en modo difícil serán mas colores y con menos diferencia.
+
+## Aclaración
+
+> Para correr el desafío Vuelos se debe posicionar en la carpeta vuelos, poner en concola `npm i` (teniendo instalado previamente **Node**) y luego poner el comando `npm run start` para levantar el servidor. Podrás ver el contenido en localhost:3000
+
+> Para correr el desafío Colores yo utilicé la extensión de VSCode llamada **Live Server**. Con la extensión instalada haz click derecho a index.html y selecciona *Open with Live Server*
 
 ## Tecnologías utilizadas
 

@@ -60,9 +60,6 @@ const controller = {
     modify: async (req, res) => {
         try {
             const { previousFlightNumber, flightNumber, arrival, airline, delayed } = req.body;
-
-            console.log(req.body)
-
             await Flight.update(
                 { flightNumber, arrival, airline, delayed },
                 {where: {flightNumber: previousFlightNumber}});

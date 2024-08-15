@@ -29,7 +29,7 @@ const controller = {
         const flightNumber = req.body.flightNumber;
 
         if (!flightNumber) {
-            return res.status(400).send('ID del registro no proporcionado.'); //ACA HAY QUE VALIDARLO DE OTRA FORMA
+            return res.status(400).send('ID del registro no proporcionado.'); 
         }
 
         try {
@@ -75,7 +75,7 @@ const controller = {
             res.render("selectFlight", { title: "Modificacion de Vuelo", name: "Selecciona un vuelo", button: "Enviar", onlyFlightsNumber });
         }
         catch (error) {
-            console.error('Error buscando los numeros de vuelo:', error);
+            console.error("Error buscando los numeros de vuelo:", error);
         }
     },
     sendSelectedFlight: async (req, res) => {
@@ -84,7 +84,8 @@ const controller = {
             res.redirect(`/modify/${flightSelected}`);
         } 
         catch (error) {
-            console.error('Error mostrando el vuelo seleccionado:', error);
+            console.error("Error mostrando el vuelo seleccionado:", error);
+            res.status(500).send("Error mostrando el vuelo seleccionado:");
         }
     }
 }

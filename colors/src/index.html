@@ -9,13 +9,15 @@
 </head>
 <body>
     <div class="container vh-100" id="full-screen-container">   
-        <div class="container h-15">
+        <div class="container h-15 mb-5">
             <h1 class="rainbow-text display-2">Juego Colores</h1>
-            <hr>
         </div>
         
-        <div class="container mb-5" id="set-difficulty-section">
-            <div class="row justify-content-center">
+        <div class="container mt-5 h-75" id="set-difficulty-section">
+            <div class="container my-5">
+              <p class="text-start fs-3 fw-bold" id="welcome">¡Bienvenido! Selecciona la dificultad</p>
+            </div>
+            <div class="row justify-content-center pt-5">
               <div class="col-4 text-center">
                 <button type="submit" class="btn btn-outline-success btn-lg px-4 py-2 set-difficulty-buttons" value="easy">Fácil</button>
               </div>
@@ -26,13 +28,27 @@
                 <button type="submit" class="btn btn-outline-danger btn-lg px-4 py-2 set-difficulty-buttons" value="difficult">Difícil</button>
               </div>
             </div>
+            <div class="container my-5">
+              <p class="text-center text-body-secondary fw-light pt-5" id="instructions">
+                Juegos Colores se basa en adivinar el color teniendo como dato
+                su código en color hexadecimal (por ejemplo #ff0000).
+                El código hexadecimal se compone de seis caracteres alfanuméricos, que representan 
+                los valores de los colores RGB. Los dos primeros caracteres representan el valor del 
+                color rojo, los dos siguientes representan el valor del verde, y los dos últimos 
+                representan el valor del azul.
+                Cada uno de estos caracteres puede ser un número 
+                del 0 al 9 o una letra de la A a la F. Por ejemplo, el código hexadecimal 
+                para el color rojo puro es #FF0000, mientras que el código para el color blanco 
+                es #FFFFFF.
+              </p>
+            </div>
           </div>
 
 
         <div class="container mb-5 text-center" id="game-section">
-            <h2 class="display-6" id="which-color-is-it">¿Qué color es #ff0000?</h2>
-            <div id="score-current" class="pt-3">
-              <h4>Tu puntaje es: <span id="current-score">0</span></h4>
+            <h2 class="display-6 my-5" id="which-color-is-it">¿Qué color es #ff0000?</h2>
+            <div id="score-current" class="pt-5">
+              <h4 class="text-start">Tu puntaje es: <span id="current-score">0</span></h4>
             </div>
             <div class="row justify-content-center mt-4" id="squares-container">
               <div class="col-lg-2 col-md-4 col-sm-6">
@@ -68,7 +84,6 @@
                 </tr>
               </thead>
               <tbody id="table-body-scores">
-                <!-- Aquí irán las filas generadas dinámicamente -->
               </tbody>
             </table>
         </div>

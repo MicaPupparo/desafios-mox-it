@@ -38,6 +38,14 @@ body {
     cursor: pointer;
 }
 
+#instructions {
+    font-size: small;
+}
+
+#welcome {
+    color: rgb(71, 71, 71);
+}
+
 #set-difficulty-section {
     display: block;
 }

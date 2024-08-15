@@ -21,6 +21,13 @@ function startGame(difficulty) {
     handleRounds(difficulty)
 }
 
+function endGame() {
+    hideSection($gameSection);
+    showSection($scoresSection);
+
+    showAllScores();
+}
+
 function handleRounds(difficulty) {
     let round = 1;
     let points = 0;
@@ -125,7 +132,7 @@ function newRound(difficulty, $colorSquares, points) {
     setSquareColorByDifficulty(difficulty, randomPosition, color, $colorSquares);
 
     $messageColor.innerText = `${color.toHexString()}`;
-    $currentScore.innerText = `Tu puntaje es: ${points}`;
+    $currentScore.innerText = `${points}`;
 
     return color.toHexString();
 }
@@ -173,13 +180,6 @@ function randomPositionByDifficulty(difficulty) {
     difficulty == "difficult" ? randomPosition = Math.floor(Math.random()*6) : console.log("error");
 
     return randomPosition;
-}
-
-function endGame() {
-    hideSection($gameSection);
-    showSection($scoresSection);
-
-    showAllScores();
 }
 
 function hideSection($element) {

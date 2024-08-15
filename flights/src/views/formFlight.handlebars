@@ -1,0 +1,42 @@
+<body>
+    <div class="container my-4">
+        <p class="fs-1">{{name}}</p>
+
+        <div class="row align-items-start">
+            <div class="col-sm-6">
+                <form method="POST" id="modify-form">
+                    <input type="text" name="previousFlightNumber" value="{{flight.dataValues.flightNumber}}" style="display: none;">
+                    <div class="mb-3">
+                        <label for="arrival" class="form-label h6">Horario Llegada</label>
+                        <input type="time" name="arrival" class="form-control" id="arrival" aria-describedby="emailHelp" value="{{flight.dataValues.arrival}}">
+                        <div class="invalid-feedback">
+                            Por favor, escribe un horario valido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="flight" class="form-label h6">Vuelo</label>
+                        <input type="text" name="flightNumber" class="form-control" id="flight" placeholder="Numero de Vuelo p.ej.: AU 2399" value="{{flight.dataValues.flightNumber}}">
+                        <div class="invalid-feedback">
+                            Por favor, escribe un numero de vuelo válido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="airline" class="form-label h6">Línea Aerea</label>
+                        <input type="text" name="airline" class="form-control" id="airline" placeholder="Linea Aerea p.ej.: Latam" value="{{flight.dataValues.airline}}">
+                        <div class="invalid-feedback">
+                            Por favor, escribe una línea aerea válida.
+                        </div>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" name="delayed" class="form-check-input" id="delayed" value="true" {{#if flight.dataValues.delayed}}checked{{/if}}>
+                        <label class="form-check-label" for="delayed">Demorado</label>
+                    </div>
+                    <button type="submit" id="modify-button" class="btn btn-primary">{{button}}</button>
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+    <script src="/js/validations.js"></script>
+</body>

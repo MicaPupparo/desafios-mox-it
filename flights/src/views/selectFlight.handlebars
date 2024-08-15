@@ -1,22 +1,20 @@
 <body>
-    <p class="fs-1">Modificar</p>
+    <div class="container my-4">
+        <p class="fs-1">{{name}}</p>
 
-    <div class="row align-items-start" id="elegir-vuelo" >
-        <div class="col-sm-6">
-            <form method="POST">
-                <div class="col">
-                    <select name="selectFlightNumber" class="form-select form-select-sm" aria-label="Small select example">
-                        {{#each flights as |flight|}}
-                            <option value="{{flight.dataValues.flightNumber}}">{{flight.dataValues.flightNumber}}</option>
-                        {{/each}}
-                    </select>
-                </div>
-                <div class="col-sm-2">
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </div>
+        <div class="container align-items-start">
+            <form method="POST" class="row" novalidate>
+            <div class="col-sm-2">
+                <select name="flightNumber" class="form-select form-select-sm" aria-label="Small select example">
+                    {{#each onlyFlightsNumber as |flightNumber|}}
+                        <option value="{{flightNumber.dataValues.flightNumber}}">{{flightNumber.dataValues.flightNumber}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">{{button}}</button>
+            </div>
             </form>
         </div>
     </div>
-
-    <script src="/js/bootstrap.bundle.min.js"></script>
 </body>

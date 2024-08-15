@@ -54,7 +54,7 @@ function createSquares(difficulty) {
     if (difficulty == "easy") {
         for (i = 0; i < 3; i++) {
             $squaresContainer.innerHTML += `
-                <div class="col-lg-4">
+                <div class="col d-flex justify-content-center">
                     <div class="square"></div>
                 </div>
             `

@@ -3,7 +3,7 @@ const Flight = require("../database/models/Flight");
 
 const controller = {
     showCreate: (req, res) => {
-        res.render("createFlight", { title: "Alta de Vuelos" });
+        res.render("formFlight", { title: "Alta de Vuelos", name: "Alta", button: "Crear" });
     },
     create: async (req, res) => {
         try {
@@ -18,7 +18,7 @@ const controller = {
     showDelete: async (req, res) => {
         try {
             const onlyFlightsNumber = await Flight.findAll( {attributes: ["flightNumber"]} );
-            res.render("deleteFlight", { title: "Baja de Vuelos", onlyFlightsNumber });
+            res.render("selectFlight", { title: "Baja de Vuelos", name: "Baja", button: "Eliminar", onlyFlightsNumber });
         }
         catch (error) {
             console.error("Error buscando los numeros de vuelo:", error);
@@ -50,9 +50,8 @@ const controller = {
     showModify: async (req, res) => {
         try {
             const flightSelected = req.params.flightNumber;
-            console.log(flightSelected)
             const flight = await Flight.findOne( { where: { flightNumber: flightSelected }});
-            res.render("modifyFlight", { title: "Modificacion de Vuelo", flight });
+            res.render("formFlight", { title: "Modificacion de Vuelo", name: "Modificación", button: "Modificar", flight });
         }
         catch (error) {
             console.error('Error al seleccionar vuelo:', error);
@@ -75,8 +74,8 @@ const controller = {
     },
     selectFlight: async (req, res) => {
         try {
-            const flights = await Flight.findAll( {attributes: ["flightNumber"] });
-            res.render("selectFlight", { title: "Modificacion de Vuelo", flights });
+            const onlyFlightsNumber = await Flight.findAll( {attributes: ["flightNumber"] });
+            res.render("selectFlight", { title: "Modificacion de Vuelo", name: "Selecciona un vuelo", button: "Enviar", onlyFlightsNumber });
         }
         catch (error) {
             console.error('Error buscando los numeros de vuelo:', error);
@@ -84,7 +83,7 @@ const controller = {
     },
     sendSelectedFlight: async (req, res) => {
         try {
-            const flightSelected = req.body.selectFlightNumber;
+            const flightSelected = req.body.flightNumber;
             res.redirect(`/modify/${flightSelected}`);
         } 
         catch (error) {

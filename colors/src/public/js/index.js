@@ -119,7 +119,6 @@ function isSquareCorrect(element, color) {
     const squareStyle = window.getComputedStyle(element).getPropertyValue("background-color");
     const squareColor = tinycolor(`${squareStyle}`).toHexString();
     let isCorrect = color == squareColor ? true : false;
-    console.log(isCorrect)
     return isCorrect;
 }
 

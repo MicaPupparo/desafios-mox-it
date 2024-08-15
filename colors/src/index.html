@@ -17,7 +17,7 @@
             <div class="container my-5">
               <p class="text-start fs-3 fw-bold" id="welcome">¡Bienvenido! Selecciona la dificultad</p>
             </div>
-            <div class="row justify-content-center pt-5">
+            <div class="row justify-content-center py-5">
               <div class="col-4 text-center">
                 <button type="submit" class="btn btn-outline-success btn-lg px-4 py-2 set-difficulty-buttons" value="easy">Fácil</button>
               </div>
@@ -29,7 +29,7 @@
               </div>
             </div>
             <div class="container my-5">
-              <p class="text-center text-body-secondary fw-light pt-5" id="instructions">
+              <p class="align-text-bottom text-center text-body-secondary fw-light pt-5" id="instructions">
                 Juegos Colores se basa en adivinar el color teniendo como dato
                 su código en color hexadecimal (por ejemplo #ff0000).
                 El código hexadecimal se compone de seis caracteres alfanuméricos, que representan 
@@ -41,6 +41,13 @@
                 para el color rojo puro es #FF0000, mientras que el código para el color blanco 
                 es #FFFFFF.
               </p>
+              <div class="container pt-5" id="system-points">
+                <p class="text-center text-body-secondary fw-light"> <span class="fw-bold">Sistema de puntos:</span>
+                Cada dificultad tiene distintas cantidades de puntos cuando se acierta el color.
+                Para el modo Fácil, cada acierto vale 5 puntos. Para el modo Medio, vale 7. Y para el 
+                modo Difícil vale 10.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -92,6 +99,6 @@
     </div>
 
     <script src="./libs/tinycolor-min.js"></script>
-    <script src="./public/js/index.mjs"></script>
+    <script src="./public/js/index.js"></script>
 </body>
 </html>

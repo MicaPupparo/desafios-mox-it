@@ -2,9 +2,15 @@ const $setdifficultySection = document.querySelector("#set-difficulty-section");
 const $gameSection = document.querySelector("#game-section");
 const $scoresSection = document.querySelector("#scores-section");
 const $setDifficultyButtons = document.querySelectorAll(".set-difficulty-buttons");
+const $backToMenuButton = document.querySelector("#back-to-menu")
 const $messageColor = document.querySelector("#which-color-is-it");
 const $currentScore = document.querySelector("#current-score");
 
+$backToMenuButton.onclick = event => {
+    event.preventDefault();
+    hideSection($scoresSection);
+    showSection($setdifficultySection);
+}
 
 $setDifficultyButtons.forEach((button) => {
     button.onclick = event => {

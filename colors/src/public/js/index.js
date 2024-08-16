@@ -18,7 +18,7 @@ function startGame(difficulty) {
     hideSection($setdifficultySection);
     showSection($gameSection);
 
-    handleRounds(difficulty)
+    handleRounds(difficulty);
 }
 
 function endGame() {

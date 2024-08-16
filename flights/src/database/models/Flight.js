@@ -10,7 +10,6 @@ const Flight = sequelize.define("Flight", {
   flightNumber: {
     type: DataTypes.STRING,
     allowNull: false,
-    //unique: true,
     field: "flight_number",
     validate: {
       is: /^[A-Z]{2,4} [0-9]{4}$/i,

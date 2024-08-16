@@ -1,4 +1,3 @@
-const { where } = require("sequelize"); //chequear
 const Flight = require("../database/models/Flight");
 
 const controller = {
@@ -8,6 +7,7 @@ const controller = {
     create: async (req, res) => {
         try {
             const { flightNumber, arrival, airline, delayed } = req.body;
+            console.log(delayed)
             await Flight.create({ flightNumber, arrival, airline, delayed });
             res.redirect("/"); 
           } catch (error) {
@@ -29,7 +29,7 @@ const controller = {
         const flightNumber = req.body.flightNumber;
 
         if (!flightNumber) {
-            return res.status(400).send('ID del registro no proporcionado.'); 
+            return res.status(400).send("ID del registro no proporcionado."); 
         }
 
         try {
@@ -54,7 +54,7 @@ const controller = {
             res.render("formFlight", { title: "Modificacion de Vuelo", name: "Modificación", button: "Modificar", flight });
         }
         catch (error) {
-            console.error('Error al seleccionar vuelo:', error);
+            console.error("Error al seleccionar vuelo:", error);
         }
     },
     modify: async (req, res) => {

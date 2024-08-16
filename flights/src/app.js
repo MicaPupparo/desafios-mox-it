@@ -14,18 +14,18 @@ const app = express();
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-app.engine('handlebars', engine({
-  defaultLayout: 'main', 
-  layoutsDir: path.join(__dirname, 'views/layouts'), 
-  partialsDir: path.join(__dirname, 'views/partials') 
+app.engine("handlebars", engine({
+  defaultLayout: "main", 
+  layoutsDir: path.join(__dirname, "views/layouts"), 
+  partialsDir: path.join(__dirname, "views/partials") 
 }));
-app.set('view engine', 'handlebars');
-app.set('views', path.join(__dirname, 'views'));
+app.set("view engine", "handlebars");
+app.set("views", path.join(__dirname, "views"));
 
-app.use('/', homeRoute);
-app.use('/create', createFlightRoute);
+app.use("/", homeRoute);
+app.use("/create", createFlightRoute);
 app.use("/delete", deleteFlightRoute);
 app.use("/modify", modifyFlightRoute);
 
